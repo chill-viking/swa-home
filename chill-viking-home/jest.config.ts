@@ -10,6 +10,7 @@ export default {
     },
   },
   coverageDirectory: './coverage/chill-viking-home',
+  coverageReporters: ['lcov', 'json'],
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
