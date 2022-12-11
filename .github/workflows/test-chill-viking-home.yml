@@ -4,10 +4,10 @@ on:
     branches:
       - main
     paths:
-      - chill-viking-home
+      - chill-viking-home/**
   pull_request:
     paths:
-      - chill-viking-home
+      - chill-viking-home/**
 
 jobs:
   main:
