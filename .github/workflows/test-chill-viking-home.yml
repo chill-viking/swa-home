@@ -49,12 +49,11 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
-          projectBaseDir: chill-viking-home
           args: >
             -Dsonar.organization=chill-viking-org
             -Dsonar.projectKey=chill-viking_swa-home
-            -Dsonar.javascript.lcov.reportPaths=./chill-viking-home/coverage/chill-viking-home/lcov.info
-            -Dsonar.typescript.tsconfigPaths=./chill-viking-home/tsconfig.app.json
+            -Dsonar.javascript.lcov.reportPaths=./coverage/chill-viking-home/lcov.info
+            -Dsonar.typescript.tsconfigPaths=./tsconfig.app.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
