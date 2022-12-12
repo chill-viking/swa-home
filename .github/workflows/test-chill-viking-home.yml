@@ -21,6 +21,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - run: ls -R
+        
       - uses: nrwl/nx-set-shas@v3
       - name: Cache node modules
         id: cache-nodemodules
@@ -39,14 +42,6 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
-
-      - run: >
-          for file in /source/directory/*
-          do
-              if [[ -f $file ]]; then
-                  #copy stuff ....
-              fi
-          done
 
       - run: npx nx workspace-lint
       - run: npx nx format:check
