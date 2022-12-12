@@ -57,6 +57,7 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
+          projectBaseDir: chill-viking-home
           args: >
             -Dsonar.organization=chill-viking-org
             -Dsonar.projectKey=chill-viking_swa-home
