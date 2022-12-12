@@ -53,3 +53,6 @@ jobs:
           args: >
             -Dsonar.organization=chill-viking-org
             -Dsonar.projectKey=chill-viking_swa-home
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
