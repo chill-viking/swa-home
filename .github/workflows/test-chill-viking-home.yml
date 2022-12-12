@@ -7,12 +7,12 @@ on:
       - chill-viking-home/**
   pull_request:
     types: [ opened, synchronize, reopened ]
-    paths:
-      - chill-viking-home/**
+    # paths:
+    #   - chill-viking-home/**
 
 jobs:
   main:
-    name: lint and test
+    name: lint, test, and publish
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -48,6 +48,8 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: chill-viking-home
+          args: >
+            -Dsonar.organization=chill-viking-org
+            -Dsonar.projectKey=chill-viking_swa-home
