@@ -40,6 +40,14 @@ jobs:
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
 
+      - run: >
+          for file in /source/directory/*
+          do
+              if [[ -f $file ]]; then
+                  #copy stuff ....
+              fi
+          done
+
       - run: npx nx workspace-lint
       - run: npx nx format:check
       - run: npx nx affected --target=lint --parallel=3
