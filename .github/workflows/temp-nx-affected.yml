@@ -14,6 +14,7 @@ env:
 
 jobs:
   lint-workspace:
+    runs-on: ubuntu-latest
     name: Nx Lint Workspace
     defaults:
       run:
@@ -26,6 +27,7 @@ jobs:
         run: npx nx-cloud record -- npx nx workspace-lint
 
   lint-test-build:
+    runs-on: ubuntu-latest
     strategy:
     matrix:
       target:
