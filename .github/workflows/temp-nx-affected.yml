@@ -1,0 +1,51 @@
+on:
+  pull_request:
+    branches: ['main']
+    types: [opened, synchronize, reopened]
+
+name: Lint, Test, and Build Affected
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  working-directory: './chill-viking-home/'
+
+jobs:
+  lint-workspace:
+    name: Nx Lint Workspace
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: ${{ env.working-directory }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Lint Workspace
+        run: npx nx-cloud record -- npx nx workspace-lint
+
+  lint-test-build:
+    strategy:
+    matrix:
+      target:
+        - lint
+        - test
+        - build
+    name: 'Nx Affected: ${{ matrix.target }}'
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: ${{ env.working-directory }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: chill-viking/workflows/actions/npm-ci@main
+        name: Install dependencies w/ caching
+        with:
+          working-directory: ${{ env.working-directory }}
+
+      - name: Run Target
+        run: npx nx affected --target=${{ matrix.target }} --parallel=3
