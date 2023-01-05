@@ -29,11 +29,11 @@ jobs:
   lint-test-build:
     runs-on: ubuntu-latest
     strategy:
-    matrix:
-      target:
-        - lint
-        - test
-        - build
+      matrix:
+        target:
+          - lint
+          - test
+          - build
     name: 'Nx Affected: ${{ matrix.target }}'
     defaults:
       run:
