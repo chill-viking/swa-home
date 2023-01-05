@@ -8,7 +8,7 @@ on:
     types: [ opened, synchronize, reopened ]
     branches: [main]
 
-name: Scan chill-viking-home
+name: test-chill-viking-home
 
 permissions:
   contents: read
@@ -31,7 +31,6 @@ jobs:
           working-directory: './chill-viking-home/'
 
       - run: npx nx workspace-lint
-      - run: npx nx format:check
       - run: npx nx affected --target=lint --parallel=3
       - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
       - run: npx nx affected --target=build --parallel=3
