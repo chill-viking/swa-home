@@ -56,8 +56,8 @@ jobs:
 
       - name: Run Target
         run: |
-          target="--target=${{ matrix.target }}"
-          base="--base=main"
-          head="--head=HEAD"
-          parallel="--parallel=3"
+          target=("--target=${{ matrix.target }}")
+          base=("--base=main")
+          head=("--head=HEAD")
+          parallel=("--parallel=3")
           npx nx affected $target $base $head $parallel
