@@ -56,7 +56,7 @@ jobs:
 
       - name: Run Target
         run: |
-          npx nx affected ` 
+          npx nx affected `
             --target=${{ matrix.target }} `
             --parallel=3 `
             --base=main `
