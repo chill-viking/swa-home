@@ -9,7 +9,7 @@ permissions: read-all
 
 jobs:
   use-workflow:
-    - uses: chill-viking/workflows/.github/workflows/nx-test-affected.yml@main
-      name: 'Test Affected'
-      with:
-        working-directory: './chill-viking-home/'
+    uses: chill-viking/workflows/.github/workflows/nx-test-affected.yml@main
+    name: 'Test Affected'
+    with:
+      working-directory: './chill-viking-home/'
