@@ -60,7 +60,7 @@ jobs:
             'npx nx affected'
             '--target=${{ matrix.target }}'
             '--parallel=3'
-            '--base=main'
+            '--base=origin/main'
             '--head=HEAD'
           ) -join ' '
           echo $expression
