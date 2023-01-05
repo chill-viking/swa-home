@@ -56,11 +56,12 @@ jobs:
 
       - name: Run Target
         run: |
-          $flags=@(
+          $expression=@(
+            'npx nx affected'
             '--target=${{ matrix.target }}'
             '--parallel=3'
             '--base=main'
             '--head=HEAD'
           ) -join ' '
-          echo $flags
-          npx nx affected $flags
+          echo $expression
+          Invoke-Expression $expression
