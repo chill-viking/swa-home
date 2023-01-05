@@ -1,0 +1,27 @@
+on:
+  pull_request:
+    branches: ['main']
+    types: [opened, synchronize, reopened]
+
+name: Build and Test Affected
+
+permissions: read-all
+
+jobs:
+  main:
+    name: Nx Cloud - Main Job
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11
+    working-directory: ./chill-viking-home
+    with:
+      number-of-agents: 3
+      parallel-commands: |
+        npx nx-cloud record -- npx nx workspace-lint
+      parallel-commands-on-agents: |
+        npx nx affected --target=lint --parallel=3 & npx nx affected --target=test --parallel=3 & npx nx affected --target=build --parallel=3
+
+  agents:
+    name: Nx Cloud - Agents
+    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.11
+    working-directory: ./chill-viking-home
+    with:
+      number-of-agents: 3
