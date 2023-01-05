@@ -59,16 +59,13 @@ jobs:
     name: publish to sonarcloud
     runs-on: ubuntu-latest
     steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@v2
-        with:
-          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
-
       - uses: actions/checkout@v3
         name: 'Checkout code'
 
       - uses: chill-viking/workflows/actions/npm-ci@main
         name: Install Dependencies
+        with:
+          working-directory: ${{ inputs.working-directory }}
 
       - uses: chill-viking/workflows/actions/nx-test-and-build@main
         name: Test and Build project
