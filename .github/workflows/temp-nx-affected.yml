@@ -23,6 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: chill-viking/workflows/actions/npm-ci@main
+        name: Install dependencies w/ caching
+        with:
+          working-directory: ${{ env.working-directory }}
+
       - name: Lint Workspace
         run: npx nx-cloud record -- npx nx workspace-lint
 
@@ -50,4 +55,9 @@ jobs:
           working-directory: ${{ env.working-directory }}
 
       - name: Run Target
-        run: npx nx affected --target=${{ matrix.target }} --parallel=3
+        run: |
+          npx nx affected ` 
+            --target=${{ matrix.target }} `
+            --parallel=3 `
+            --base=main `
+            --target=HEAD
