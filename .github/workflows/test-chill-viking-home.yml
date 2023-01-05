@@ -24,7 +24,7 @@ jobs:
       coverage-location: coverage/lcov.info
       project-name: home-landing
       config-location: tsconfig.app.json
-      project-version: 0.0.2
+      package-location: ./chill-viking-home/
     secrets:
       sonar-token: ${{ secrets.SONAR_TOKEN }}
       github-token: ${{ secrets.GITHUB_TOKEN }}
