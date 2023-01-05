@@ -92,7 +92,7 @@ jobs:
         with:
           projectBaseDir: ${{ env.PROJECT_BASE }}
           args: >
-            -Dsonar.organisation=${{ inputs.sonar-org }}
+            -Dsonar.organization=${{ inputs.sonar-org }}
             -Dsonar.projectKey=${{ inputs.sonar-project }}
             -Dsonar.javascript.lcov.reportPaths=${{ inputs.coverage-location }}
             -Dsonar.typescript.tsconfigPaths=${{ inputs.config-location }}
