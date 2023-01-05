@@ -13,4 +13,3 @@ jobs:
       name: 'Test Affected'
       with:
         working-directory: './chill-viking-home/'
-
