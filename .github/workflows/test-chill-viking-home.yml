@@ -16,7 +16,7 @@ permissions:
 jobs:
   use-workflow:
     name: lint, test, and publish
-    uses: chill-viking/workflows/.github/workflows/sonar-cloud.yml@main
+    uses: chill-viking/workflows/.github/workflows/nx-sonar-cloud-scanner.yml@main
     with:
       sonar-project: chill-viking_swa-home
       working-directory: ./chill-viking-home/
