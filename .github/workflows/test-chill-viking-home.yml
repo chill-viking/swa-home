@@ -1,4 +1,3 @@
-name: Test and Lint chill-viking-home
 on:
   push:
     branches:
@@ -7,6 +6,11 @@ on:
       - chill-viking-home/**
   pull_request:
     types: [ opened, synchronize, reopened ]
+
+name: Scan chill-viking-home
+
+permissions:
+  contents: read
 
 jobs:
   main:
